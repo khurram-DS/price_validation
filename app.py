@@ -178,6 +178,7 @@ def main():
                     if not merged_df.empty:
                         y=merged_df['name'][0]
                         driver = setup_chrome_driver()
+                        
                         """import os
                         desktop_path = os.path.join(os.path.expanduser('~'), 'Desktop')
                         
