@@ -12,6 +12,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.common.exceptions import TimeoutException, WebDriverException
 from selenium.webdriver.support import expected_conditions as EC
+from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.service import Service
 import base64
 import io
@@ -163,8 +164,8 @@ def main():
                         
                     if not merged_df.empty:
                         y=merged_df['name'][0]
-                        
-                        import os
+                        driver = webdriver.Chrome(ChromeDriverManager().install())
+                        """import os
                         desktop_path = os.path.join(os.path.expanduser('~'), 'Desktop')
                         
                         # Assuming the Chromedriver is named 'chromedriver' or 'chromedriver.exe' and located on the desktop
@@ -177,7 +178,7 @@ def main():
                             driver = webdriver.Chrome(service=s)
                             # Your scraping logic here
                         else:
-                            st.error(f'Chromedriver not found on the desktop. Expected path: {chromedriver_path}')
+                            st.error(f'Chromedriver not found on the desktop. Expected path: {chromedriver_path}')"""
                                                 
                         url=merged_df.zomato[0]
                         z_resname = []
