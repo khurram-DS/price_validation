@@ -165,7 +165,7 @@ def main():
                         
                         import os
                         desktop_path = os.path.join(os.path.expanduser('~'), 'Desktop')
-
+                        
                         # Assuming the Chromedriver is named 'chromedriver' or 'chromedriver.exe' and located on the desktop
                         chromedriver_name = 'chromedriver.exe' if os.name == 'nt' else 'chromedriver'
                         chromedriver_path = os.path.join(desktop_path, chromedriver_name)
@@ -417,7 +417,7 @@ def main():
                                     # If not all data has been captured, break out of the loop
                                     break
                         
-                            driver.quit()
+                            #driver.quit()
                         
                             # Ensure all lists are the same length by filling with "NA"
                             max_length = max( len(item_name), len(item_price))
