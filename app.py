@@ -27,15 +27,17 @@ import openpyxl
 def setup_chrome_driver():
     # Specify Chrome options for Selenium
     chrome_options = Options()
-    chrome_options.add_argument("--headless") # Ensures Chrome runs in headless mode
-    chrome_options.add_argument("--no-sandbox") # Bypass OS security model, required on some environments
-    chrome_options.add_argument("--disable-dev-shm-usage") # Overcome limited resource problems
-    # Specify the path to your chrome binary location
-    chrome_options.binary_location = "static/chromedriver.exe"
+    chrome_options.add_argument("--headless")  # Ensures Chrome runs in headless mode
+    chrome_options.add_argument("--no-sandbox")  # Bypass OS security model, required on some environments
+    chrome_options.add_argument("--disable-dev-shm-usage")  # Overcome limited resource problems
 
-    # Set up Chrome driver
-    service = Service(ChromeDriverManager().install())
+    # Specify the path to chromedriver.exe you have placed in your project
+    chromedriver_path = "static/chromedriver.exe"
+
+    # Set up Chrome driver with the specified chromedriver path
+    service = Service(executable_path=chromedriver_path)
     driver = webdriver.Chrome(service=service, options=chrome_options)
+
     return driver
 
 
