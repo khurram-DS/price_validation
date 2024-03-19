@@ -161,7 +161,7 @@ def main():
                     #merged_df=mer_df[mer_df['id'] == x]
                     #merged_df['zomato'] = merged_df['zomato'].apply(lambda x: x + "/order" if pd.notnull(x) else x)
                     #merged_df=merged_df.reset_index(drop=True)
-                    driver = webdriver.Chrome(ChromeDriverManager().install())
+                        driver = webdriver.Chrome(ChromeDriverManager().install())
                     #if not merged_df.empty:
                         #y=merged_df['name'][0]
                         
