@@ -1,26 +1,42 @@
 import streamlit as st
 import pandas as pd
-
 import requests
-import selenium
 from selenium import webdriver
-import time
-
-import os
-from selenium.common.exceptions import StaleElementReferenceException, NoSuchElementException, ElementNotInteractableException, InvalidElementStateException
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
-from selenium.common.exceptions import TimeoutException, WebDriverException
 from selenium.webdriver.support import expected_conditions as EC
-from webdriver_manager.chrome import ChromeDriverManager
-from selenium.webdriver.chrome.service import Service
-import base64
-import io
-from sqlalchemy import create_engine
-from PIL import Image
-import requests
+from selenium.common.exceptions import NoSuchElementException, TimeoutException
 from io import BytesIO
 import mysql.connector
+from sqlalchemy import create_engine
+from PIL import Image
+import base64
+from fuzzywuzzy import fuzz
+import re
+import smtplib
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+from email.mime.base import MIMEBase
+from email.mime.image import MIMEImage
+from email import encoders
+import openpyxl
+
+def setup_chrome_driver():
+    # Specify Chrome options for Selenium
+    chrome_options = Options()
+    chrome_options.add_argument("--headless") # Ensures Chrome runs in headless mode
+    chrome_options.add_argument("--no-sandbox") # Bypass OS security model, required on some environments
+    chrome_options.add_argument("--disable-dev-shm-usage") # Overcome limited resource problems
+    # Specify the path to your chrome binary location
+    chrome_options.binary_location = "static/chromedriver.exe"
+
+    # Set up Chrome driver
+    service = Service(ChromeDriverManager().install())
+    driver = webdriver.Chrome(service=service, options=chrome_options)
+    return driver
 
 
 
@@ -164,7 +180,7 @@ def main():
                         
                     if not merged_df.empty:
                         y=merged_df['name'][0]
-                        driver = webdriver.Chrome(ChromeDriverManager().install())
+                        driver = setup_chrome_driver()
                         """import os
                         desktop_path = os.path.join(os.path.expanduser('~'), 'Desktop')
                         
