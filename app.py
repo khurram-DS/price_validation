@@ -12,7 +12,6 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.common.exceptions import TimeoutException, WebDriverException
 from selenium.webdriver.support import expected_conditions as EC
-from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.service import Service
 import base64
 import io
@@ -158,27 +157,27 @@ def main():
                 # The rest of the code that depends on x should be inside this block
                 
                 if x is not None:
-                    #merged_df=mer_df[mer_df['id'] == x]
-                    #merged_df['zomato'] = merged_df['zomato'].apply(lambda x: x + "/order" if pd.notnull(x) else x)
-                    #merged_df=merged_df.reset_index(drop=True)
-                        driver = webdriver.Chrome(ChromeDriverManager().install())
-                    #if not merged_df.empty:
-                        #y=merged_df['name'][0]
+                    merged_df=mer_df[mer_df['id'] == x]
+                    merged_df['zomato'] = merged_df['zomato'].apply(lambda x: x + "/order" if pd.notnull(x) else x)
+                    merged_df=merged_df.reset_index(drop=True)
                         
-                        #import os
-                        #desktop_path = os.path.join(os.path.expanduser('~'), 'Desktop')
+                    if not merged_df.empty:
+                        y=merged_df['name'][0]
+                        
+                        import os
+                        desktop_path = os.path.join(os.path.expanduser('~'), 'Desktop')
                         
                         # Assuming the Chromedriver is named 'chromedriver' or 'chromedriver.exe' and located on the desktop
-                        #chromedriver_name = 'chromedriver.exe' if os.name == 'nt' else 'chromedriver'
-                        #chromedriver_path = os.path.join(desktop_path, chromedriver_name)
+                        chromedriver_name = 'chromedriver.exe' if os.name == 'nt' else 'chromedriver'
+                        chromedriver_path = os.path.join(desktop_path, chromedriver_name)
                         
-                        #if os.path.exists(chromedriver_path):
+                        if os.path.exists(chromedriver_path):
                             # Initialize the Selenium Service with the path
-                            #s = Service(chromedriver_path)
-                            #driver = webdriver.Chrome(service=s)
+                            s = Service(chromedriver_path)
+                            driver = webdriver.Chrome(service=s)
                             # Your scraping logic here
-                        #else:
-                            #st.error(f'Chromedriver not found on the desktop. Expected path: {chromedriver_path}')
+                        else:
+                            st.error(f'Chromedriver not found on the desktop. Expected path: {chromedriver_path}')
                                                 
                         url=merged_df.zomato[0]
                         z_resname = []
