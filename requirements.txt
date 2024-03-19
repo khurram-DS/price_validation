@@ -1,0 +1,17 @@
+
+MarkupSafe==1.1.1
+numpy>=1.9.2
+scipy>=0.15.1
+scikit-learn>=0.18
+matplotlib>=1.4.3
+pandas>=0.19
+plotly==5.4.0
+py==1.10.0
+streamlit>=1.8.1
+openpyxl>=3.0.0
+beautifulsoup4==4.9.3
+selenium==3.141.0
+webdriver_manager==3.4.2
+
+
+
