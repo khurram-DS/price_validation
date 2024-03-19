@@ -155,6 +155,7 @@ def main():
             #chromedriver_path = st.text_input('Enter the path to your Chromedriver on the desktop:', '')
             if st.button('Confirm Selection'):
                 # The rest of the code that depends on x should be inside this block
+                driver = None
                 if x is not None:
                     merged_df=mer_df[mer_df['id'] == x]
                     merged_df['zomato'] = merged_df['zomato'].apply(lambda x: x + "/order" if pd.notnull(x) else x)
