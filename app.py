@@ -31,7 +31,7 @@ def setup_chrome_driver():
     chrome_options.add_argument("--no-sandbox")  # Bypass OS security model, required on some environments
     chrome_options.add_argument("--disable-dev-shm-usage")  # Overcome limited resource problems
 
-    # Setup Chrome service
+    # Setup Chrome service with the correct executable path using ChromeDriverManager
     service = ChromeService(executable_path=ChromeDriverManager().install())
 
     # Initialize the Chrome driver with the service and options defined above
