@@ -175,7 +175,7 @@ def main():
                 
                 if x is not None:
                     merged_df=mer_df[mer_df['id'] == x]
-                    merged_df['zomato'] = merged_df['zomato'].apply(lambda x: x + "/order" if pd.notnull(x) else x)
+                    merged_df.loc[:, 'zomato'] = merged_df['zomato'].apply(lambda x: x + "/order" if pd.notnull(x) else x)
                     merged_df=merged_df.reset_index(drop=True)
                         
                     if not merged_df.empty:
