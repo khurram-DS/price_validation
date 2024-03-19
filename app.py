@@ -25,18 +25,14 @@ from email import encoders
 import openpyxl
 
 def setup_chrome_driver():
-    # Specify Chrome options for Selenium
     chrome_options = Options()
-    chrome_options.add_argument("--headless")  # Ensures Chrome runs in headless mode
-    chrome_options.add_argument("--no-sandbox")  # Bypass OS security model, required on some environments
-    chrome_options.add_argument("--disable-dev-shm-usage")  # Overcome limited resource problems
+    chrome_options.add_argument("--headless")
+    chrome_options.add_argument("--no-sandbox")
+    chrome_options.add_argument("--disable-dev-shm-usage")
 
-    # Setup Chrome service with the correct executable path using ChromeDriverManager
-    service = ChromeService(executable_path=ChromeDriverManager().install())
-
-    # Initialize the Chrome driver with the service and options defined above
+    # Use Service with ChromeDriverManager
+    service = Service(ChromeDriverManager().install())
     driver = webdriver.Chrome(service=service, options=chrome_options)
-
     return driver
 
 
