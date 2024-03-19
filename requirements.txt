@@ -15,7 +15,7 @@ sqlalchemy==1.4.22
 pymysql==1.0.2
 mysql-connector-python==8.0.25
 pillow==8.2.0
-selenium <= 4.18.1
+
 
 
 
